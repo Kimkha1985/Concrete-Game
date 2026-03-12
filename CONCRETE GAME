@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Concrete Moai Challenge</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#020617;
+color:white;
+text-align:center;
+}
+
+h1{
+margin-top:10px;
+}
+
+canvas{
+background:linear-gradient(#1e3a8a,#0ea5e9);
+display:block;
+margin:auto;
+border-radius:10px;
+}
+
+#ui{
+margin-top:10px;
+font-size:20px;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:#ff4da6;
+color:white;
+cursor:pointer;
+}
+
+#leaderboard{
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🗿 Concrete Moai Challenge</h1>
+
+<canvas id="game" width="800" height="400"></canvas>
+
+<div id="ui">
+Score: <span id="score">0</span>
+</div>
+
+<button onclick="jump()">Jump</button>
+
+<div id="leaderboard">
+<h2>🏆 Top Builders</h2>
+<ol id="board"></ol>
+</div>
+
+<script>
+
+const canvas=document.getElementById("game")
+const ctx=canvas.getContext("2d")
+
+let player={
+x:120,
+y:300,
+w:50,
+h:50,
+dy:0,
+jump:false
+}
+
+let gravity=0.7
+let obstacles=[]
+let blocks=[]
+let score=0
+let speed=6
+let gameOver=false
+
+function drawPlayer(){
+
+ctx.fillStyle="#94a3b8"
+ctx.fillRect(player.x,player.y,player.w,player.h)
+
+}
+
+function spawnEnemy(){
+
+obstacles.push({
+x:800,
+y:320,
+w:40,
+h:40
+})
+
+}
+
+function spawnBlock(){
+
+blocks.push({
+x:800,
+y:250,
+s:25
+})
+
+}
+
+function drawEnemy(){
+
+ctx.fillStyle="#ef4444"
+
+obstacles.forEach(o=>{
+ctx.fillRect(o.x,o.y,o.w,o.h)
+})
+
+}
+
+function drawBlock(){
+
+ctx.fillStyle="#fbbf24"
+
+blocks.forEach(b=>{
+ctx.fillRect(b.x,b.y,b.s,b.s)
+})
+
+}
+
+function update(){
+
+if(gameOver)return
+
+ctx.clearRect(0,0,800,400)
+
+player.dy+=gravity
+player.y+=player.dy
+
+if(player.y>300){
+player.y=300
+player.dy=0
+player.jump=false
+}
+
+drawPlayer()
+
+speed=6+score/200
+
+obstacles.forEach((o,i)=>{
+
+o.x-=speed
+
+if(
+player.x<o.x+o.w &&
+player.x+player.w>o.x &&
+player.y<o.y+o.h &&
+player.y+player.h>o.y
+){
+endGame()
+}
+
+})
+
+blocks.forEach((b,i)=>{
+
+b.x-=speed
+
+if(
+player.x<b.x+b.s &&
+player.x+player.w>b.x &&
+player.y<b.y+b.s &&
+player.y+player.h>b.y
+){
+
+score+=10
+document.getElementById("score").innerText=score
+blocks.splice(i,1)
+
+}
+
+})
+
+drawEnemy()
+drawBlock()
+
+requestAnimationFrame(update)
+
+}
+
+function jump(){
+
+if(!player.jump){
+
+player.dy=-13
+player.jump=true
+
+}
+
+}
+
+function endGame(){
+
+gameOver=true
+
+let name=prompt("Enter your name for leaderboard")
+
+if(name){
+
+let scores=JSON.parse(localStorage.getItem("moaiScores"))||[]
+
+scores.push({name:name,score:score})
+
+scores.sort((a,b)=>b.score-a.score)
+
+scores=scores.slice(0,10)
+
+localStorage.setItem("moaiScores",JSON.stringify(scores))
+
+showBoard()
+
+}
+
+alert("Game Over! Score: "+score)
+
+}
+
+function showBoard(){
+
+let scores=JSON.parse(localStorage.getItem("moaiScores"))||[]
+
+let board=document.getElementById("board")
+
+board.innerHTML=""
+
+scores.forEach(s=>{
+
+let li=document.createElement("li")
+
+li.innerText=s.name+" - "+s.score
+
+board.appendChild(li)
+
+})
+
+}
+
+setInterval(spawnEnemy,2300)
+setInterval(spawnBlock,1600)
+
+document.addEventListener("keydown",e=>{
+if(e.code==="Space")jump()
+})
+
+canvas.addEventListener("touchstart",jump)
+
+showBoard()
+update()
+
+</script>
+
+</body>
+</html>
