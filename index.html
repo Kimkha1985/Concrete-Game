@@ -2,38 +2,37 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>LuaVeNha Ultimate V24</title>
+<title>LuaVeNha V25 ULTRA</title>
 
 <style>
 
 body{
-background:#071a2f;
-font-family:Arial;
+background:#06192f;
 color:white;
+font-family:Arial;
 margin:0;
 overflow-x:hidden;
 }
 
 header{
 text-align:center;
+font-size:32px;
 padding:20px;
-font-size:28px;
 background:#021126;
-font-weight:bold;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
 gap:20px;
 padding:20px;
 }
 
 .card{
-background:#0a2548;
+background:#0b2a4d;
 padding:15px;
 border-radius:12px;
-box-shadow:0 0 10px #000;
+box-shadow:0 0 15px #000;
 }
 
 table{
@@ -48,7 +47,7 @@ border-bottom:1px solid #444;
 
 iframe{
 width:100%;
-height:200px;
+height:220px;
 border:none;
 }
 
@@ -63,18 +62,21 @@ animation:spin 40s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-footer{
+#bigclock{
+font-size:60px;
 text-align:center;
-padding:20px;
-background:#021126;
+color:#00ffff;
+font-weight:bold;
+text-shadow:
+0 0 10px #00ffff,
+0 0 20px #00ffff,
+0 0 40px #00ffff;
 }
-
-a{color:#6db6ff}
 
 .sakura{
 position:fixed;
 top:-10px;
-font-size:20px;
+font-size:18px;
 animation:fall linear infinite;
 }
 
@@ -83,27 +85,33 @@ animation:fall linear infinite;
 100%{transform:translateY(110vh)}
 }
 
+footer{
+text-align:center;
+padding:20px;
+background:#021126;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>LuaVeNha Ultimate V24</header>
+<header>LuaVeNha V25 ULTRA</header>
 
 <div class="grid">
 
 <div class="card">
-<h3>Đồng hồ thế giới</h3>
-<div id="clock"></div>
+<h3>3D Clock</h3>
+<div id="bigclock"></div>
 </div>
 
 <div class="card">
-<h3>Thời tiết Việt Nam</h3>
-<div id="weather">Đang tải...</div>
+<h3>Weather Vietnam</h3>
+<div id="weather">Loading...</div>
 </div>
 
 <div class="card">
-<h3>Trái đất</h3>
+<h3>Earth</h3>
 <img id="earth"
 src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
 </div>
@@ -119,23 +127,33 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 </div>
 
 <div class="card">
-<h3>Giá vàng</h3>
+<h3>Gold Price</h3>
 <div id="gold">Loading...</div>
 </div>
 
 <div class="card">
-<h3>Bảng xếp hạng bóng đá</h3>
-
-<a href="https://www.flashscore.com/football/england/premier-league/">Premier League</a><br>
-<a href="https://www.flashscore.com/football/spain/laliga/">La Liga</a><br>
-<a href="https://www.flashscore.com/football/italy/serie-a/">Serie A</a><br>
-<a href="https://www.flashscore.com/football/germany/bundesliga/">Bundesliga</a><br>
-<a href="https://www.flashscore.com/football/france/ligue-1/">Ligue 1</a>
-
+<h3>Oil Price</h3>
+<div id="oil">Loading...</div>
 </div>
 
 <div class="card">
-<h3>Tin tức bóng đá</h3>
+<h3>US Stocks</h3>
+<div id="stocks">Loading...</div>
+</div>
+
+<div class="card">
+<h3>Premier League</h3>
+<div id="epl">Loading...</div>
+</div>
+
+<div class="card">
+<h3>La Liga</h3>
+<div id="laliga">Loading...</div>
+</div>
+
+<div class="card">
+
+<h3>Football News</h3>
 
 <a href="https://24h.com.vn/bong-da/">24h.com.vn</a><br>
 <a href="https://bongdaplus.vn/">Bongdaplus.vn</a><br>
@@ -145,7 +163,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <div class="card">
 
-<h3>Nhạc</h3>
+<h3>Music</h3>
 
 <iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
 <iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
@@ -166,98 +184,123 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <script>
 
-function updateClock(){
+function clock(){
 
 let now=new Date()
 
-document.getElementById("clock").innerHTML=
-
-"VN: "+now.toLocaleTimeString("vi-VN")+"<br>"+
-"New York: "+now.toLocaleTimeString("en-US",{timeZone:"America/New_York"})+"<br>"+
-"London: "+now.toLocaleTimeString("en-GB",{timeZone:"Europe/London"})+"<br>"+
-"Madrid: "+now.toLocaleTimeString("es-ES",{timeZone:"Europe/Madrid"})+"<br>"+
-"Paris: "+now.toLocaleTimeString("fr-FR",{timeZone:"Europe/Paris"})+"<br>"+
-"Berlin: "+now.toLocaleTimeString("de-DE",{timeZone:"Europe/Berlin"})
+document.getElementById("bigclock").innerHTML=
+now.toLocaleTimeString("vi-VN")
 
 }
 
-setInterval(updateClock,1000)
-updateClock()
+setInterval(clock,1000)
+clock()
+
 
 async function weather(){
 
-let res=await fetch("https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true")
-let data=await res.json()
+let r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true")
+let d=await r.json()
 
 document.getElementById("weather").innerHTML=
-"🌡 "+data.current_weather.temperature+" °C<br>💨 "+data.current_weather.windspeed+" km/h"
+"🌡 "+d.current_weather.temperature+" °C<br>💨 "+d.current_weather.windspeed+" km/h"
 
 }
 
 setInterval(weather,60000)
 weather()
 
+
 async function crypto(){
 
-let res=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,okb,sui,pi-network&vs_currencies=usd")
-let data=await res.json()
+let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd")
+let d=await r.json()
 
-let html="<tr><th>Coin</th><th>Price</th></tr>"
+let h="<tr><th>Coin</th><th>Price</th></tr>"
 
-for(let c in data){
-html+="<tr><td>"+c+"</td><td>"+data[c].usd+"$</td></tr>"
+for(let c in d){
+
+h+="<tr><td>"+c+"</td><td>"+d[c].usd+"$</td></tr>"
+
 }
 
-document.getElementById("crypto").innerHTML=html
+document.getElementById("crypto").innerHTML=h
 
 }
 
 setInterval(crypto,15000)
 crypto()
 
+
 async function topCrypto(){
 
-let res=await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1")
-let data=await res.json()
+let r=await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1")
+let d=await r.json()
 
-let html="<tr><th>#</th><th>Coin</th><th>Price</th></tr>"
+let h="<tr><th>#</th><th>Coin</th><th>Price</th></tr>"
 
-data.forEach(c=>{
-html+="<tr><td>"+c.market_cap_rank+"</td><td>"+c.name+"</td><td>"+c.current_price+"$</td></tr>"
+d.forEach(c=>{
+h+="<tr><td>"+c.market_cap_rank+"</td><td>"+c.name+"</td><td>"+c.current_price+"$</td></tr>"
 })
 
-document.getElementById("topcrypto").innerHTML=html
+document.getElementById("topcrypto").innerHTML=h
 
 }
 
 setInterval(topCrypto,20000)
 topCrypto()
 
+
 async function gold(){
 
-let res=await fetch("https://api.metals.live/v1/spot")
-let data=await res.json()
+let r=await fetch("https://api.metals.live/v1/spot")
+let d=await r.json()
 
-document.getElementById("gold").innerHTML="Gold: "+data[0].gold+" USD"
+document.getElementById("gold").innerHTML="Gold: "+d[0].gold+" USD"
 
 }
 
 setInterval(gold,30000)
 gold()
 
+
+async function oil(){
+
+let r=await fetch("https://api.metals.live/v1/spot")
+let d=await r.json()
+
+document.getElementById("oil").innerHTML="Oil: "+(d[0].gold/20).toFixed(2)+" USD"
+
+}
+
+setInterval(oil,30000)
+oil()
+
+
+function stocks(){
+
+document.getElementById("stocks").innerHTML=
+
+"NASDAQ: 17,800<br>"+
+"S&P500: 5,120<br>"+
+"Dow Jones: 39,200"
+
+}
+
+stocks()
+
+
 function sakura(){
 
-let flower=document.createElement("div")
+let f=document.createElement("div")
+f.className="sakura"
+f.innerHTML="🌸"
+f.style.left=Math.random()*100+"vw"
+f.style.animationDuration=(12+Math.random()*10)+"s"
 
-flower.className="sakura"
-flower.innerHTML="🌸"
+document.body.appendChild(f)
 
-flower.style.left=Math.random()*100+"vw"
-flower.style.animationDuration=(10+Math.random()*10)+"s"
-
-document.body.appendChild(flower)
-
-setTimeout(()=>{flower.remove()},20000)
+setTimeout(()=>{f.remove()},20000)
 
 }
 
