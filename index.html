@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
-<title>LuaVeNha V26 ULTRA</title>
+<title>LuaVeNha V27 PRO</title>
 
 <style>
 
 body{
-background:#06192f;
-color:white;
-font-family:Arial;
 margin:0;
+font-family:Arial;
+background:#071c36;
+color:white;
 }
 
 header{
 text-align:center;
-font-size:32px;
+font-size:34px;
 padding:20px;
 background:#021126;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
 padding:20px;
 }
 
 .card{
-background:#0b2a4d;
+background:#0a2c55;
 padding:15px;
 border-radius:12px;
-box-shadow:0 0 15px #000;
+box-shadow:0 0 10px #000;
 }
 
 table{
@@ -48,8 +46,15 @@ border-bottom:1px solid #444;
 
 iframe{
 width:100%;
-height:220px;
+height:200px;
 border:none;
+border-radius:10px;
+}
+
+.music-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:12px;
 }
 
 #earth{
@@ -63,14 +68,16 @@ animation:spin 40s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-#bigclock{
+#clock{
 font-size:60px;
 text-align:center;
 color:#00ffff;
-text-shadow:
-0 0 10px #00ffff,
-0 0 20px #00ffff,
-0 0 40px #00ffff;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#021126;
 }
 
 .sakura{
@@ -85,165 +92,106 @@ animation:fall linear infinite;
 100%{transform:translateY(110vh)}
 }
 
-footer{
-text-align:center;
-padding:20px;
-background:#021126;
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-<header>LuaVeNha V26 ULTRA</header>
+<header>LuaVeNha V27 PRO</header>
 
 <div class="grid">
 
 <div class="card">
-<h3>3D Clock</h3>
-<div id="bigclock"></div>
+<h3>Clock</h3>
+<div id="clock"></div>
 </div>
 
 <div class="card">
-<h3>Weather Vietnam</h3>
-<div id="weather"></div>
+<h3>Weather</h3>
+<div id="weather">Loading...</div>
 </div>
 
 <div class="card">
 <h3>Earth</h3>
-
 <img id="earth"
 src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
-
 </div>
 
-
 <div class="card">
-
-<h3>Crypto Market</h3>
-
+<h3>Crypto</h3>
 <table>
-
 <tr><th>Coin</th><th>Price</th></tr>
-
 <tr><td>BTC</td><td id="btc"></td></tr>
 <tr><td>ETH</td><td id="eth"></td></tr>
 <tr><td>SOL</td><td id="sol"></td></tr>
 <tr><td>OKB</td><td id="okb"></td></tr>
 <tr><td>SUI</td><td id="sui"></td></tr>
-
 </table>
-
 </div>
 
-
 <div class="card">
-
-<h3>Top Crypto</h3>
-
-<table>
-
-<tr><th>#</th><th>Coin</th><th>Price</th></tr>
-
-<tr><td>1</td><td>Bitcoin</td><td id="btc2"></td></tr>
-<tr><td>2</td><td>Ethereum</td><td id="eth2"></td></tr>
-<tr><td>3</td><td>Solana</td><td id="sol2"></td></tr>
-
-</table>
-
+<h3>Gold</h3>
+<div id="gold">Loading...</div>
 </div>
 
-
 <div class="card">
-
-<h3>Gold Price</h3>
-
-<div id="gold">2185 USD / oz</div>
-
+<h3>Oil</h3>
+<div id="oil">Loading...</div>
 </div>
 
-
 <div class="card">
-
-<h3>Oil Price</h3>
-
-<div id="oil">78 USD / barrel</div>
-
-</div>
-
-
-<div class="card">
-
 <h3>US Stocks</h3>
-
-NASDAQ: 17800<br>
-S&P500: 5120<br>
-Dow Jones: 39200
-
+<div id="stocks">
+NASDAQ<br>
+S&P500<br>
+Dow Jones
+</div>
 </div>
 
-
 <div class="card">
-
 <h3>Premier League</h3>
-
 <table>
-
 <tr><th>#</th><th>Team</th><th>Pts</th></tr>
-
 <tr><td>1</td><td>Man City</td><td>88</td></tr>
 <tr><td>2</td><td>Arsenal</td><td>84</td></tr>
 <tr><td>3</td><td>Liverpool</td><td>82</td></tr>
-<tr><td>4</td><td>Aston Villa</td><td>70</td></tr>
-
 </table>
-
 </div>
 
-
 <div class="card">
-
 <h3>La Liga</h3>
-
 <table>
-
 <tr><th>#</th><th>Team</th><th>Pts</th></tr>
-
 <tr><td>1</td><td>Real Madrid</td><td>95</td></tr>
 <tr><td>2</td><td>Barcelona</td><td>85</td></tr>
 <tr><td>3</td><td>Girona</td><td>81</td></tr>
-
 </table>
+</div>
 
 </div>
 
-
 <div class="card">
 
-<h3>Football News</h3>
+<h2>Music</h2>
 
-<a href="https://24h.com.vn/bong-da/">24h.com.vn</a><br>
-<a href="https://bongdaplus.vn/">Bongdaplus.vn</a><br>
-<a href="https://vnexpress.net/the-thao">VnExpress</a>
-
-</div>
-
-
-<div class="card">
-
-<h3>Music</h3>
+<div class="music-grid">
 
 <iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
 <iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
 <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
+<iframe src="https://www.youtube.com/embed/KbEM5vf0XGI"></iframe>
+<iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
+<iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
+<iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
+<iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
+<iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
+<iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
+<iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
 
 </div>
 
 </div>
-
 
 <footer>
 
@@ -252,65 +200,37 @@ Dow Jones: 39200
 
 </footer>
 
-
 <script>
 
-
 function clock(){
-
 let now=new Date()
-
-document.getElementById("bigclock").innerHTML=
+document.getElementById("clock").innerHTML=
 now.toLocaleTimeString("vi-VN")
-
 }
-
 setInterval(clock,1000)
-clock()
-
 
 async function weather(){
-
-let r=await fetch(
-"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
-)
-
+let r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true")
 let d=await r.json()
-
 document.getElementById("weather").innerHTML=
-"🌡 "+d.current_weather.temperature+" °C<br>💨 "+d.current_weather.windspeed+" km/h"
-
+d.current_weather.temperature+" °C"
 }
-
 weather()
 setInterval(weather,60000)
 
-
-
 async function crypto(){
-
-let r=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd"
-)
-
+let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd")
 let d=await r.json()
 
-btc.innerHTML=d.bitcoin.usd+" $"
-eth.innerHTML=d.ethereum.usd+" $"
-sol.innerHTML=d.solana.usd+" $"
-okb.innerHTML=d.okb.usd+" $"
-sui.innerHTML=d.sui.usd+" $"
-
-btc2.innerHTML=d.bitcoin.usd+" $"
-eth2.innerHTML=d.ethereum.usd+" $"
-sol2.innerHTML=d.solana.usd+" $"
-
+document.getElementById("btc").innerHTML=d.bitcoin.usd+" $"
+document.getElementById("eth").innerHTML=d.ethereum.usd+" $"
+document.getElementById("sol").innerHTML=d.solana.usd+" $"
+document.getElementById("okb").innerHTML=d.okb.usd+" $"
+document.getElementById("sui").innerHTML=d.sui.usd+" $"
 }
 
 crypto()
-setInterval(crypto,15000)
-
-
+setInterval(crypto,30000)
 
 function sakura(){
 
@@ -320,7 +240,7 @@ f.className="sakura"
 f.innerHTML="🌸"
 
 f.style.left=Math.random()*100+"vw"
-f.style.animationDuration=(12+Math.random()*10)+"s"
+f.style.animationDuration=(10+Math.random()*10)+"s"
 
 document.body.appendChild(f)
 
@@ -331,7 +251,6 @@ setTimeout(()=>{f.remove()},20000)
 setInterval(sakura,900)
 
 </script>
-
 
 </body>
 </html>
