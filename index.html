@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
-<title>LuaVeNha V27 PRO</title>
+<title>LuaVeNha V28 ULTRA</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#071c36;
+background:#061a33;
 color:white;
 }
 
@@ -28,7 +29,7 @@ padding:20px;
 }
 
 .card{
-background:#0a2c55;
+background:#0b2a4d;
 padding:15px;
 border-radius:12px;
 box-shadow:0 0 10px #000;
@@ -74,12 +75,6 @@ text-align:center;
 color:#00ffff;
 }
 
-footer{
-text-align:center;
-padding:20px;
-background:#021126;
-}
-
 .sakura{
 position:fixed;
 top:-10px;
@@ -92,12 +87,27 @@ animation:fall linear infinite;
 100%{transform:translateY(110vh)}
 }
 
+.news a{
+color:#9ddcff;
+text-decoration:none;
+}
+
+.news a:hover{
+text-decoration:underline;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#021126;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>LuaVeNha V27 PRO</header>
+<header>LuaVeNha V28 ULTRA</header>
 
 <div class="grid">
 
@@ -107,65 +117,77 @@ animation:fall linear infinite;
 </div>
 
 <div class="card">
-<h3>Weather</h3>
+<h3>Weather Vietnam</h3>
 <div id="weather">Loading...</div>
 </div>
 
 <div class="card">
 <h3>Earth</h3>
+
 <img id="earth"
 src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
+
 </div>
 
 <div class="card">
-<h3>Crypto</h3>
+
+<h3>Crypto Market</h3>
+
 <table>
+
 <tr><th>Coin</th><th>Price</th></tr>
+
 <tr><td>BTC</td><td id="btc"></td></tr>
 <tr><td>ETH</td><td id="eth"></td></tr>
 <tr><td>SOL</td><td id="sol"></td></tr>
 <tr><td>OKB</td><td id="okb"></td></tr>
 <tr><td>SUI</td><td id="sui"></td></tr>
+
 </table>
+
 </div>
 
 <div class="card">
+
 <h3>Gold</h3>
 <div id="gold">Loading...</div>
+
 </div>
 
 <div class="card">
+
 <h3>Oil</h3>
 <div id="oil">Loading...</div>
+
 </div>
 
 <div class="card">
+
 <h3>US Stocks</h3>
-<div id="stocks">
+
 NASDAQ<br>
 S&P500<br>
 Dow Jones
-</div>
+
 </div>
 
 <div class="card">
-<h3>Premier League</h3>
-<table>
-<tr><th>#</th><th>Team</th><th>Pts</th></tr>
-<tr><td>1</td><td>Man City</td><td>88</td></tr>
-<tr><td>2</td><td>Arsenal</td><td>84</td></tr>
-<tr><td>3</td><td>Liverpool</td><td>82</td></tr>
-</table>
+
+<h3>⚽ Football News</h3>
+
+<div class="news" id="news">
+Loading...
 </div>
 
-<div class="card">
-<h3>La Liga</h3>
-<table>
-<tr><th>#</th><th>Team</th><th>Pts</th></tr>
-<tr><td>1</td><td>Real Madrid</td><td>95</td></tr>
-<tr><td>2</td><td>Barcelona</td><td>85</td></tr>
-<tr><td>3</td><td>Girona</td><td>81</td></tr>
-</table>
+<br>
+
+<b>Nguồn:</b><br>
+
+<a href="https://24h.com.vn/bong-da/" target="_blank">24h.com.vn</a><br>
+<a href="https://bongdaplus.vn/" target="_blank">Bongdaplus.vn</a><br>
+<a href="https://vnexpress.net/the-thao" target="_blank">VnExpress</a><br>
+<a href="https://www.espn.com/soccer/" target="_blank">ESPN</a>
+
 </div>
 
 </div>
@@ -181,10 +203,12 @@ Dow Jones
 <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
 <iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
 <iframe src="https://www.youtube.com/embed/KbEM5vf0XGI"></iframe>
+
 <iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
 <iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
 <iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
 <iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
+
 <iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
 <iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
 <iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
@@ -195,31 +219,46 @@ Dow Jones
 
 <footer>
 
-<a href="https://github.com">GitHub</a> |
-<a href="https://x.com">X</a>
+LuaVeNha Dashboard
 
 </footer>
 
 <script>
 
 function clock(){
+
 let now=new Date()
+
 document.getElementById("clock").innerHTML=
 now.toLocaleTimeString("vi-VN")
+
 }
+
 setInterval(clock,1000)
+clock()
 
 async function weather(){
-let r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true")
+
+let r=await fetch(
+"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
+)
+
 let d=await r.json()
+
 document.getElementById("weather").innerHTML=
-d.current_weather.temperature+" °C"
+"🌡 "+d.current_weather.temperature+" °C<br>💨 "+d.current_weather.windspeed+" km/h"
+
 }
+
 weather()
 setInterval(weather,60000)
 
 async function crypto(){
-let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd")
+
+let r=await fetch(
+"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd"
+)
+
 let d=await r.json()
 
 document.getElementById("btc").innerHTML=d.bitcoin.usd+" $"
@@ -227,10 +266,40 @@ document.getElementById("eth").innerHTML=d.ethereum.usd+" $"
 document.getElementById("sol").innerHTML=d.solana.usd+" $"
 document.getElementById("okb").innerHTML=d.okb.usd+" $"
 document.getElementById("sui").innerHTML=d.sui.usd+" $"
+
 }
 
 crypto()
 setInterval(crypto,30000)
+
+async function footballNews(){
+
+let r=await fetch(
+"https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
+)
+
+let d=await r.json()
+
+let html=""
+
+for(let i=0;i<6;i++){
+
+let n=d.items[i]
+
+html+=`
+<a href="${n.link}" target="_blank">
+${n.title}
+</a><br><br>
+`
+
+}
+
+document.getElementById("news").innerHTML=html
+
+}
+
+footballNews()
+setInterval(footballNews,300000)
 
 function sakura(){
 
