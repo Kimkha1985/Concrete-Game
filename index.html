@@ -1,268 +1,357 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Concrete Moai Challenge</title>
+<title>LuaVeNha Ultimate Dashboard</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#020617;
+background:linear-gradient(120deg,#000428,#004e92);
 color:white;
+}
+
+header{
+font-size:40px;
+text-align:center;
+padding:20px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.box{
+background:rgba(0,0,0,0.6);
+padding:20px;
+border-radius:12px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td,th{
+border:1px solid white;
+padding:6px;
 text-align:center;
 }
 
-h1{
-margin-top:10px;
+#cards{
+display:flex;
+flex-wrap:wrap;
 }
 
-canvas{
-background:linear-gradient(#1e3a8a,#0ea5e9);
-display:block;
-margin:auto;
-border-radius:10px;
-}
-
-#ui{
-margin-top:10px;
-font-size:20px;
-}
-
-button{
-padding:10px 20px;
-margin-top:10px;
-font-size:16px;
-border:none;
-border-radius:8px;
-background:#ff4da6;
-color:white;
+.card{
+width:60px;
+height:90px;
+border-radius:6px;
+border:1px solid white;
+background:white;
+color:black;
+margin:4px;
+display:flex;
+align-items:center;
+justify-content:center;
 cursor:pointer;
+font-weight:bold;
 }
 
-#leaderboard{
-margin-top:20px;
+.selected{
+background:yellow;
+}
+
+iframe{
+width:100%;
+height:200px;
+margin-top:10px;
+}
+
+footer{
+margin-top:40px;
+padding:30px;
+background:black;
+text-align:center;
+}
+
+.social a{
+display:inline-block;
+margin:10px;
+padding:15px 25px;
+font-size:18px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+}
+
+.github{
+background:#333;
+}
+
+.twitter{
+background:#1DA1F2;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>🗿 Concrete Moai Challenge</h1>
+<header>LuaVeNha Ultimate</header>
 
-<canvas id="game" width="800" height="400"></canvas>
+<div class="container">
 
-<div id="ui">
-Score: <span id="score">0</span>
+<div class="box">
+<h3>World Clock</h3>
+<div id="clock"></div>
 </div>
 
-<button onclick="jump()">Jump</button>
-
-<div id="leaderboard">
-<h2>🏆 Top Builders</h2>
-<ol id="board"></ol>
+<div class="box">
+<h3>Weather</h3>
+<div id="weather">Loading...</div>
 </div>
+
+<div class="box">
+<h3>Crypto Market</h3>
+<table id="crypto"></table>
+</div>
+
+<div class="box">
+<h3>Gold Price</h3>
+<div id="gold">Loading...</div>
+</div>
+
+<div class="box">
+<h3>Football Center</h3>
+<p>
+<a href="https://www.livescore.com">LiveScore</a><br>
+<a href="https://www.flashscore.com">FlashScore</a>
+</p>
+</div>
+
+<div class="box">
+<h3>Football News</h3>
+
+<a href="https://www.24h.com.vn/bong-da/">24h.com.vn</a><br>
+<a href="https://bongdaplus.vn">Bongdaplus.vn</a><br>
+<a href="https://vnexpress.net/the-thao">VnExpress</a>
+
+</div>
+
+<div class="box">
+<h3>Music Player</h3>
+
+<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
+<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
+<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
+<iframe src="https://www.youtube.com/embed/KbEM5vf0XGI"></iframe>
+
+</div>
+
+<div class="box">
+<h3>Game Tiến Lên</h3>
+
+<div id="cards"></div>
+
+<button onclick="play()">Đánh</button>
+<button onclick="pass()">Bỏ lượt</button>
+<button onclick="deal()">Chia bài</button>
+
+</div>
+
+</div>
+
+<footer>
+
+<h2>Kết nối</h2>
+
+<div class="social">
+
+<a class="github" href="https://github.com/" target="_blank">
+GitHub
+</a>
+
+<a class="twitter" href="https://x.com/" target="_blank">
+X (Twitter)
+</a>
+
+</div>
+
+<p>LuaVeNha Dashboard</p>
+
+</footer>
 
 <script>
 
-const canvas=document.getElementById("game")
-const ctx=canvas.getContext("2d")
+function clock(){
 
-let player={
-x:120,
-y:300,
-w:50,
-h:50,
-dy:0,
-jump:false
-}
+let now=new Date()
 
-let gravity=0.7
-let obstacles=[]
-let blocks=[]
-let score=0
-let speed=6
-let gameOver=false
+document.getElementById("clock").innerHTML=
 
-function drawPlayer(){
+"VN: "+now.toLocaleTimeString("en-US",{timeZone:"Asia/Ho_Chi_Minh"})+"<br>"+
 
-ctx.fillStyle="#94a3b8"
-ctx.fillRect(player.x,player.y,player.w,player.h)
+"New York: "+now.toLocaleTimeString("en-US",{timeZone:"America/New_York"})+"<br>"+
+
+"London: "+now.toLocaleTimeString("en-US",{timeZone:"Europe/London"})+"<br>"+
+
+"Madrid: "+now.toLocaleTimeString("en-US",{timeZone:"Europe/Madrid"})+"<br>"+
+
+"Paris: "+now.toLocaleTimeString("en-US",{timeZone:"Europe/Paris"})+"<br>"+
+
+"Berlin: "+now.toLocaleTimeString("en-US",{timeZone:"Europe/Berlin"})
 
 }
 
-function spawnEnemy(){
+setInterval(clock,1000)
 
-obstacles.push({
-x:800,
-y:320,
-w:40,
-h:40
-})
+clock()
 
-}
+async function crypto(){
 
-function spawnBlock(){
+let url="https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,okb&vs_currencies=usd"
 
-blocks.push({
-x:800,
-y:250,
-s:25
-})
+let r=await fetch(url)
 
-}
+let d=await r.json()
 
-function drawEnemy(){
+let table=document.getElementById("crypto")
 
-ctx.fillStyle="#ef4444"
+table.innerHTML=
 
-obstacles.forEach(o=>{
-ctx.fillRect(o.x,o.y,o.w,o.h)
-})
+"<tr><th>Coin</th><th>Price</th></tr>"+
+
+"<tr><td>BTC</td><td>$"+d.bitcoin.usd+"</td></tr>"+
+
+"<tr><td>ETH</td><td>$"+d.ethereum.usd+"</td></tr>"+
+
+"<tr><td>OKB</td><td>$"+d.okb.usd+"</td></tr>"
 
 }
 
-function drawBlock(){
+crypto()
 
-ctx.fillStyle="#fbbf24"
+setInterval(crypto,15000)
 
-blocks.forEach(b=>{
-ctx.fillRect(b.x,b.y,b.s,b.s)
-})
+async function weather(){
 
-}
+let url="https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
 
-function update(){
+let r=await fetch(url)
 
-if(gameOver)return
+let d=await r.json()
 
-ctx.clearRect(0,0,800,400)
+document.getElementById("weather").innerHTML=
 
-player.dy+=gravity
-player.y+=player.dy
-
-if(player.y>300){
-player.y=300
-player.dy=0
-player.jump=false
-}
-
-drawPlayer()
-
-speed=6+score/200
-
-obstacles.forEach((o,i)=>{
-
-o.x-=speed
-
-if(
-player.x<o.x+o.w &&
-player.x+player.w>o.x &&
-player.y<o.y+o.h &&
-player.y+player.h>o.y
-){
-endGame()
-}
-
-})
-
-blocks.forEach((b,i)=>{
-
-b.x-=speed
-
-if(
-player.x<b.x+b.s &&
-player.x+player.w>b.x &&
-player.y<b.y+b.s &&
-player.y+player.h>b.y
-){
-
-score+=10
-document.getElementById("score").innerText=score
-blocks.splice(i,1)
+"Nhiệt độ: "+d.current_weather.temperature+"°C"
 
 }
 
-})
+weather()
 
-drawEnemy()
-drawBlock()
+setInterval(weather,30000)
 
-requestAnimationFrame(update)
+async function gold(){
+
+let url="https://api.metals.live/v1/spot"
+
+let r=await fetch(url)
+
+let d=await r.json()
+
+document.getElementById("gold").innerHTML="Gold: $"+d[0].gold
 
 }
 
-function jump(){
+gold()
 
-if(!player.jump){
+setInterval(gold,30000)
 
-player.dy=-13
-player.jump=true
+let suits=["♠","♥","♦","♣"]
+
+let ranks=["3","4","5","6","7","8","9","10","J","Q","K","A","2"]
+
+let deck=[]
+
+let player=[]
+
+function createDeck(){
+
+deck=[]
+
+for(let s of suits){
+
+for(let r of ranks){
+
+deck.push(r+s)
 
 }
 
 }
 
-function endGame(){
+}
 
-gameOver=true
+function shuffle(){
 
-let name=prompt("Enter your name for leaderboard")
-
-if(name){
-
-let scores=JSON.parse(localStorage.getItem("moaiScores"))||[]
-
-scores.push({name:name,score:score})
-
-scores.sort((a,b)=>b.score-a.score)
-
-scores=scores.slice(0,10)
-
-localStorage.setItem("moaiScores",JSON.stringify(scores))
-
-showBoard()
+deck.sort(()=>Math.random()-0.5)
 
 }
 
-alert("Game Over! Score: "+score)
+function deal(){
+
+createDeck()
+
+shuffle()
+
+player=deck.slice(0,13)
+
+render()
 
 }
 
-function showBoard(){
+function render(){
 
-let scores=JSON.parse(localStorage.getItem("moaiScores"))||[]
+let area=document.getElementById("cards")
 
-let board=document.getElementById("board")
+area.innerHTML=""
 
-board.innerHTML=""
+player.forEach(c=>{
 
-scores.forEach(s=>{
+let d=document.createElement("div")
 
-let li=document.createElement("li")
+d.className="card"
 
-li.innerText=s.name+" - "+s.score
+d.innerText=c
 
-board.appendChild(li)
+d.onclick=()=>d.classList.toggle("selected")
+
+area.appendChild(d)
 
 })
 
 }
 
-setInterval(spawnEnemy,2300)
-setInterval(spawnBlock,1600)
+function play(){
 
-document.addEventListener("keydown",e=>{
-if(e.code==="Space")jump()
-})
+alert("Bạn đánh bài!")
 
-canvas.addEventListener("touchstart",jump)
+}
 
-showBoard()
-update()
+function pass(){
+
+alert("Bạn bỏ lượt!")
+
+}
+
+deal()
 
 </script>
 
