@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
-<title>LuaVeNha V25 ULTRA</title>
+<title>LuaVeNha V26 ULTRA</title>
 
 <style>
 
@@ -11,7 +13,6 @@ background:#06192f;
 color:white;
 font-family:Arial;
 margin:0;
-overflow-x:hidden;
 }
 
 header{
@@ -66,7 +67,6 @@ animation:spin 40s linear infinite;
 font-size:60px;
 text-align:center;
 color:#00ffff;
-font-weight:bold;
 text-shadow:
 0 0 10px #00ffff,
 0 0 20px #00ffff,
@@ -92,11 +92,13 @@ background:#021126;
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<header>LuaVeNha V25 ULTRA</header>
+<header>LuaVeNha V26 ULTRA</header>
 
 <div class="grid">
 
@@ -107,49 +109,117 @@ background:#021126;
 
 <div class="card">
 <h3>Weather Vietnam</h3>
-<div id="weather">Loading...</div>
+<div id="weather"></div>
 </div>
 
 <div class="card">
 <h3>Earth</h3>
+
 <img id="earth"
 src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
+
 </div>
 
+
 <div class="card">
+
 <h3>Crypto Market</h3>
-<table id="crypto"></table>
+
+<table>
+
+<tr><th>Coin</th><th>Price</th></tr>
+
+<tr><td>BTC</td><td id="btc"></td></tr>
+<tr><td>ETH</td><td id="eth"></td></tr>
+<tr><td>SOL</td><td id="sol"></td></tr>
+<tr><td>OKB</td><td id="okb"></td></tr>
+<tr><td>SUI</td><td id="sui"></td></tr>
+
+</table>
+
 </div>
 
-<div class="card">
-<h3>Top 20 Crypto</h3>
-<table id="topcrypto"></table>
-</div>
 
 <div class="card">
+
+<h3>Top Crypto</h3>
+
+<table>
+
+<tr><th>#</th><th>Coin</th><th>Price</th></tr>
+
+<tr><td>1</td><td>Bitcoin</td><td id="btc2"></td></tr>
+<tr><td>2</td><td>Ethereum</td><td id="eth2"></td></tr>
+<tr><td>3</td><td>Solana</td><td id="sol2"></td></tr>
+
+</table>
+
+</div>
+
+
+<div class="card">
+
 <h3>Gold Price</h3>
-<div id="gold">Loading...</div>
+
+<div id="gold">2185 USD / oz</div>
+
 </div>
 
+
 <div class="card">
+
 <h3>Oil Price</h3>
-<div id="oil">Loading...</div>
+
+<div id="oil">78 USD / barrel</div>
+
 </div>
 
+
 <div class="card">
+
 <h3>US Stocks</h3>
-<div id="stocks">Loading...</div>
+
+NASDAQ: 17800<br>
+S&P500: 5120<br>
+Dow Jones: 39200
+
 </div>
 
+
 <div class="card">
+
 <h3>Premier League</h3>
-<div id="epl">Loading...</div>
+
+<table>
+
+<tr><th>#</th><th>Team</th><th>Pts</th></tr>
+
+<tr><td>1</td><td>Man City</td><td>88</td></tr>
+<tr><td>2</td><td>Arsenal</td><td>84</td></tr>
+<tr><td>3</td><td>Liverpool</td><td>82</td></tr>
+<tr><td>4</td><td>Aston Villa</td><td>70</td></tr>
+
+</table>
+
 </div>
 
+
 <div class="card">
+
 <h3>La Liga</h3>
-<div id="laliga">Loading...</div>
+
+<table>
+
+<tr><th>#</th><th>Team</th><th>Pts</th></tr>
+
+<tr><td>1</td><td>Real Madrid</td><td>95</td></tr>
+<tr><td>2</td><td>Barcelona</td><td>85</td></tr>
+<tr><td>3</td><td>Girona</td><td>81</td></tr>
+
+</table>
+
 </div>
+
 
 <div class="card">
 
@@ -161,6 +231,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 </div>
 
+
 <div class="card">
 
 <h3>Music</h3>
@@ -168,12 +239,11 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 <iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
 <iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
 <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
-<iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
-<iframe src="https://www.youtube.com/embed/KbEM5vf0XGI"></iframe>
 
 </div>
 
 </div>
+
 
 <footer>
 
@@ -182,7 +252,9 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 </footer>
 
+
 <script>
+
 
 function clock(){
 
@@ -199,7 +271,10 @@ clock()
 
 async function weather(){
 
-let r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true")
+let r=await fetch(
+"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
+)
+
 let d=await r.json()
 
 document.getElementById("weather").innerHTML=
@@ -207,94 +282,43 @@ document.getElementById("weather").innerHTML=
 
 }
 
-setInterval(weather,60000)
 weather()
+setInterval(weather,60000)
+
 
 
 async function crypto(){
 
-let r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd")
+let r=await fetch(
+"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd"
+)
+
 let d=await r.json()
 
-let h="<tr><th>Coin</th><th>Price</th></tr>"
+btc.innerHTML=d.bitcoin.usd+" $"
+eth.innerHTML=d.ethereum.usd+" $"
+sol.innerHTML=d.solana.usd+" $"
+okb.innerHTML=d.okb.usd+" $"
+sui.innerHTML=d.sui.usd+" $"
 
-for(let c in d){
-
-h+="<tr><td>"+c+"</td><td>"+d[c].usd+"$</td></tr>"
+btc2.innerHTML=d.bitcoin.usd+" $"
+eth2.innerHTML=d.ethereum.usd+" $"
+sol2.innerHTML=d.solana.usd+" $"
 
 }
 
-document.getElementById("crypto").innerHTML=h
-
-}
-
-setInterval(crypto,15000)
 crypto()
+setInterval(crypto,15000)
 
-
-async function topCrypto(){
-
-let r=await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1")
-let d=await r.json()
-
-let h="<tr><th>#</th><th>Coin</th><th>Price</th></tr>"
-
-d.forEach(c=>{
-h+="<tr><td>"+c.market_cap_rank+"</td><td>"+c.name+"</td><td>"+c.current_price+"$</td></tr>"
-})
-
-document.getElementById("topcrypto").innerHTML=h
-
-}
-
-setInterval(topCrypto,20000)
-topCrypto()
-
-
-async function gold(){
-
-let r=await fetch("https://api.metals.live/v1/spot")
-let d=await r.json()
-
-document.getElementById("gold").innerHTML="Gold: "+d[0].gold+" USD"
-
-}
-
-setInterval(gold,30000)
-gold()
-
-
-async function oil(){
-
-let r=await fetch("https://api.metals.live/v1/spot")
-let d=await r.json()
-
-document.getElementById("oil").innerHTML="Oil: "+(d[0].gold/20).toFixed(2)+" USD"
-
-}
-
-setInterval(oil,30000)
-oil()
-
-
-function stocks(){
-
-document.getElementById("stocks").innerHTML=
-
-"NASDAQ: 17,800<br>"+
-"S&P500: 5,120<br>"+
-"Dow Jones: 39,200"
-
-}
-
-stocks()
 
 
 function sakura(){
 
 let f=document.createElement("div")
+
 f.className="sakura"
 f.innerHTML="🌸"
+
 f.style.left=Math.random()*100+"vw"
 f.style.animationDuration=(12+Math.random()*10)+"s"
 
@@ -304,9 +328,10 @@ setTimeout(()=>{f.remove()},20000)
 
 }
 
-setInterval(sakura,800)
+setInterval(sakura,900)
 
 </script>
+
 
 </body>
 </html>
