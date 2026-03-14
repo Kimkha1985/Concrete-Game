@@ -2,110 +2,83 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🔥 Lua Ve Nha V41 ULTRA 🔥</title>
+<title>🔥 Lua Ve Nha V40 ULTRA 🔥</title>
 
 <style>
 
 body{
-margin:0;
 font-family:Arial;
-background:#0b1f33;
+background:#0a2342;
 color:white;
+margin:0;
 }
 
-h2{
-text-align:center;
-padding:10px;
+h3{
+margin:5px 0 10px 0;
 }
 
 .container{
 display:grid;
 grid-template-columns:1fr 1fr 1fr;
-gap:12px;
-padding:10px;
+gap:15px;
+padding:15px;
 }
 
 .card{
-background:#0e2a47;
-padding:10px;
+background:#112f55;
+padding:12px;
 border-radius:12px;
 box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 iframe{
 width:100%;
-height:160px;
+height:150px;
 border:none;
-border-radius:8px;
-}
-
-.music-grid{
-display:grid;
-grid-template-columns:1fr;
-gap:10px;
-}
-
-.center-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+border-radius:10px;
+margin-bottom:10px;
 }
 
 .clock{
 font-size:32px;
 color:#00ffff;
-font-weight:bold;
 text-align:center;
 }
 
 #news a{
-color:#FFD700;
-display:block;
-margin-bottom:6px;
-font-weight:bold;
+color:#ffd700;
 text-decoration:none;
+display:block;
+margin-bottom:8px;
 }
 
-#news a:hover{
-color:white;
-}
-
-table{
-width:100%;
-}
-
-td{
-padding:4px;
-}
-
-footer{
+.footer{
 text-align:center;
-padding:15px;
-font-size:20px;
+padding:20px;
+font-size:18px;
 }
 
-footer a{
+.footer a{
 color:#00ffff;
 margin:0 10px;
 text-decoration:none;
 font-weight:bold;
 }
 
-footer a:hover{
-color:#FFD700;
+.sakura{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
 }
 
-.earth{
-width:100%;
-border-radius:50%;
-animation:spin 40s linear infinite;
+@keyframes fall{
+to{
+transform:translateY(100vh);
+opacity:0;
 }
-
-@keyframes spin{
-from{transform:rotate(0deg)}
-to{transform:rotate(360deg)}
 }
 
 </style>
@@ -113,153 +86,135 @@ to{transform:rotate(360deg)}
 
 <body>
 
-<h2>🔥 Lua Ve Nha V41 ULTRA 🔥</h2>
+<h2 style="text-align:center">🔥 Lua Ve Nha V40 ULTRA 🔥</h2>
 
 <div class="container">
 
-<!-- MUSIC LEFT -->
+<!-- LEFT COLUMN -->
+<div>
+
 <div class="card">
 <h3>🎵 Music</h3>
 
-<div class="music-grid">
-
-<iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
-<iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
-<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
-<iframe src="https://www.youtube.com/embed/IKdSeUwO5QY"></iframe>
-<iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
-<iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
-<iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
-<iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
+<iframe src="https://www.youtube.com/embed/fLexgOxsZu0"></iframe>
+<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<iframe src="https://www.youtube.com/embed/3tmd-ClpJxA"></iframe>
+<iframe src="https://www.youtube.com/embed/7wtfhZwyrcc"></iframe>
+<iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g"></iframe>
+<iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk"></iframe>
+<iframe src="https://www.youtube.com/embed/OPf0YbXqDm0"></iframe>
+<iframe src="https://www.youtube.com/embed/JGwWNGJdvx8"></iframe>
 
 </div>
+
 </div>
 
+<!-- MIDDLE COLUMN -->
 
-<!-- CENTER -->
+<div>
+
 <div class="card">
-
-<div class="center-grid">
-
-<div>
-<h3>⏰ Giờ Việt Nam</h3>
-<div id="clockVN" class="clock"></div>
+<h3>🕒 Giờ Việt Nam</h3>
+<div class="clock" id="vnclock"></div>
 </div>
 
-<div>
+<div class="card">
 <h3>🌍 Giờ Quốc Tế</h3>
-<div id="clockWorld" class="clock"></div>
+<div class="clock" id="worldclock"></div>
 </div>
 
-</div>
-
-<h3>🌦 Weather HCM</h3>
+<div class="card">
+<h3>🌤 Weather HCM</h3>
 <div id="weather"></div>
+</div>
 
+<div class="card">
 <h3>💰 Crypto Market</h3>
 
-<table>
-<tr><td>BTC</td><td id="btc"></td></tr>
-<tr><td>ETH</td><td id="eth"></td></tr>
-<tr><td>BNB</td><td id="bnb"></td></tr>
-<tr><td>OKB</td><td id="okb"></td></tr>
-<tr><td>SUI</td><td id="sui"></td></tr>
-</table>
+BTC: <span id="btc"></span><br>
+ETH: <span id="eth"></span><br>
+BNB: <span id="bnb"></span><br>
+OKB: <span id="okb"></span><br>
+SUI: <span id="sui"></span>
 
+</div>
+
+<div class="card">
 <h3>🥇 Gold</h3>
 <div id="gold"></div>
+</div>
+
+<div class="card">
+<h3>🎵 Nhạc Phật</h3>
+
+<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
+
+<iframe src="https://www.youtube.com/embed/x1ss2eVlDgs"></iframe>
+
+<iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
+
+<iframe src="https://www.youtube.com/embed/07QO_01Xl5s"></iframe>
 
 </div>
 
+</div>
 
-<!-- RIGHT -->
+<!-- RIGHT COLUMN -->
+
+<div>
+
 <div class="card">
-
 <h3>🌍 Earth</h3>
 
-<img class="earth"
-src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
-
-<h3>⚽ Football News</h3>
-
-<div id="news"></div>
+<iframe src="https://www.youtube.com/embed/1Zt7J6bP6KQ"></iframe>
 
 </div>
-
-</div>
-
-
-<!-- MUSIC RIGHT -->
-
-<div class="container">
-
-<div></div>
 
 <div class="card">
+<h3>⚽ Football News</h3>
+<div id="news"></div>
+</div>
 
+<div class="card">
 <h3>🎵 Music</h3>
 
-<div class="music-grid">
-
-<iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
-<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
-<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
-<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
-<iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
-<iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
-<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
-<iframe src="https://www.youtube.com/embed/IKdSeUwO5QY"></iframe>
+<iframe src="https://www.youtube.com/embed/ktvTqknDobU"></iframe>
+<iframe src="https://www.youtube.com/embed/YqeW9_5kURI"></iframe>
+<iframe src="https://www.youtube.com/embed/8UVNT4wvIGY"></iframe>
+<iframe src="https://www.youtube.com/embed/kXYiU_JCYtU"></iframe>
+<iframe src="https://www.youtube.com/embed/tAGnKpE4NCI"></iframe>
+<iframe src="https://www.youtube.com/embed/uelHwf8o7_U"></iframe>
+<iframe src="https://www.youtube.com/embed/eVTXPUF4Oz4"></iframe>
+<iframe src="https://www.youtube.com/embed/LsoLEjrDogU"></iframe>
 
 </div>
 
 </div>
 
-<div></div>
-
 </div>
 
+<div class="footer">
 
-<footer>
+<a href="https://github.com/kimkha1985" target="_blank">GitHub</a> |
 
-<a href="https://github.com/">GitHub</a> |
-<a href="https://x.com/">X</a>
+<a href="https://x.com/ChauKimKha" target="_blank">X</a>
 
-</footer>
-
+</div>
 
 <script>
 
-/* CLOCK */
+function clock(){
+let now=new Date()
 
-function updateClock(){
+document.getElementById("vnclock").innerHTML=
+now.toLocaleTimeString("vi-VN")
 
-let vn=new Date().toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
-document.getElementById("clockVN").innerHTML=vn
-
-let world=new Date().toLocaleTimeString("en-US",{timeZone:"UTC"})
-document.getElementById("clockWorld").innerHTML=world
-
+document.getElementById("worldclock").innerHTML=
+now.toLocaleTimeString("en-US",{timeZone:"UTC"})
 }
 
-setInterval(updateClock,1000)
-updateClock()
-
-
-/* WEATHER */
-
-async function weather(){
-
-let r=await fetch("https://wttr.in/Ho+Chi+Minh?format=3")
-let d=await r.text()
-document.getElementById("weather").innerHTML=d
-
-}
-
-weather()
-setInterval(weather,600000)
-
-
-/* CRYPTO */
+setInterval(clock,1000)
+clock()
 
 async function crypto(){
 
@@ -280,9 +235,6 @@ sui.innerHTML=d.sui.usd+" $"
 crypto()
 setInterval(crypto,30000)
 
-
-/* GOLD */
-
 async function gold(){
 
 let r=await fetch(
@@ -296,26 +248,36 @@ gold.innerHTML=d["pax-gold"].usd+" USD"
 }
 
 gold()
-setInterval(gold,60000)
 
+async function footballNews(){
 
-/* NEWS */
+let feeds=[
+"https://vnexpress.net/rss/the-thao.rss",
+"https://bongdaplus.vn/rss",
+"https://www.espn.com/espn/rss/soccer/news"
+]
 
-async function news(){
+let html=""
+
+for(let f of feeds){
+
+try{
 
 let r=await fetch(
-"https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
+"https://api.rss2json.com/v1/api.json?rss_url="+f
 )
 
 let d=await r.json()
 
-let html=""
-
-for(let i=0;i<6;i++){
+for(let i=0;i<2;i++){
 
 let n=d.items[i]
 
-html+=`<a href="${n.link}" target="_blank">${n.title}</a>`
+html+=`<a href="${n.link}" target="_blank">⭐ ${n.title}</a>`
+
+}
+
+}catch(e){}
 
 }
 
@@ -323,8 +285,26 @@ news.innerHTML=html
 
 }
 
-news()
-setInterval(news,300000)
+footballNews()
+setInterval(footballNews,300000)
+
+function sakura(){
+
+let f=document.createElement("div")
+
+f.className="sakura"
+f.innerHTML="🌸"
+
+f.style.left=Math.random()*100+"vw"
+f.style.animationDuration=(10+Math.random()*10)+"s"
+
+document.body.appendChild(f)
+
+setTimeout(()=>{f.remove()},20000)
+
+}
+
+setInterval(sakura,800)
 
 </script>
 
