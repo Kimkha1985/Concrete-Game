@@ -5,95 +5,127 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Lua Ve Nha MASTER</title>
+<title>Lua Ve Nha Dashboard</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#06192f;
 color:white;
+background:url("https://i.imgur.com/2qQZQZQ.jpg");
+background-size:cover;
 }
 
 .container{
+
 display:grid;
-grid-template-columns:320px 1fr 320px;
+grid-template-columns:330px 1fr 330px;
 gap:20px;
 padding:20px;
+
 }
 
 .card{
-background:#0c223d;
+
+background:rgba(0,0,0,0.55);
 border-radius:18px;
 padding:15px;
-box-shadow:0 0 15px #00eaff;
+box-shadow:0 0 18px #00eaff;
+
 }
 
 .title{
 color:#00eaff;
-font-size:20px;
 margin-bottom:10px;
+font-size:20px;
 }
 
 iframe{
+
 width:100%;
 height:180px;
 border:none;
 border-radius:12px;
-margin-bottom:10px;
+margin-bottom:12px;
+
 }
 
 .clock{
+
 font-size:48px;
 text-align:center;
 color:#00ffff;
+
 }
 
-.earth{
-width:100%;
-border-radius:50%;
-animation:spin 40s linear infinite;
-}
+.world{
 
-@keyframes spin{
-from{transform:rotate(0)}
-to{transform:rotate(360deg)}
+font-size:22px;
+line-height:35px;
+text-align:center;
+
 }
 
 .crypto div{
+
 display:flex;
 justify-content:space-between;
 padding:6px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+
 }
 
 .news li{
-margin-bottom:8px;
+
+margin-bottom:10px;
+
+}
+
+.earth{
+
+width:100%;
+border-radius:50%;
+animation:spin 40s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{transform:rotate(0)}
+to{transform:rotate(360deg)}
+
 }
 
 .footer{
+
 display:flex;
 justify-content:center;
-gap:20px;
-padding:25px;
+gap:25px;
+padding:30px;
+
 }
 
 .footer a{
-padding:10px 20px;
-background:#0c223d;
+
+padding:12px 20px;
+background:rgba(0,0,0,0.5);
 border-radius:12px;
 color:#00ffff;
 text-decoration:none;
+box-shadow:0 0 15px #00ffff;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<!-- LEFT -->
+<!-- LEFT MUSIC -->
 
 <div class="card">
 
@@ -105,6 +137,7 @@ text-decoration:none;
 <iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
 <iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
 <iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
+<iframe src="https://www.youtube.com/embed/videoseries?list=RDHLUXjxYB5Kc"></iframe>
 
 </div>
 
@@ -122,11 +155,15 @@ text-decoration:none;
 
 <div class="card">
 
-<div class="title">🌍 Giờ Thế Giới</div>
+<div class="title">🌍 Giờ Quốc Tế</div>
+
+<div class="world">
 
 Tokyo: <span id="tokyo"></span><br>
 New York: <span id="newyork"></span><br>
 London: <span id="london"></span>
+
+</div>
 
 </div>
 
@@ -145,15 +182,16 @@ London: <span id="london"></span>
 <div>BTC <span id="btc"></span></div>
 <div>ETH <span id="eth"></span></div>
 <div>BNB <span id="bnb"></span></div>
+<div>OKB <span id="okb"></span></div>
 <div>SUI <span id="sui"></span></div>
 
 </div>
 
 <div class="card">
 
-<div class="title">📈 Crypto Chart</div>
+<div class="title">🪙 Gold</div>
 
-<iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&interval=60&theme=dark"></iframe>
+<div id="gold"></div>
 
 </div>
 
@@ -163,14 +201,9 @@ London: <span id="london"></span>
 
 <iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
 <iframe src="https://www.youtube.com/embed/Sk0Re5Wa-QI"></iframe>
-
-</div>
-
-<div class="card">
-
-<div class="title">📅 Today</div>
-
-<div id="date"></div>
+<iframe src="https://www.youtube.com/embed/07QO_01Xl5s"></iframe>
+<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
+<iframe src="https://www.youtube.com/embed/x1ss2eVlDgs"></iframe>
 
 </div>
 
@@ -193,7 +226,25 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <div class="title">⚽ Football News</div>
 
-<ul class="news"></ul>
+<ul class="news">
+
+<li>⭐ Real Madrid thắng Barcelona 3-2</li>
+<li>⭐ Arsenal tiếp tục đại thắng EPL</li>
+<li>⭐ Mbappe lập hattrick</li>
+<li>⭐ Messi ghi bàn phút 90</li>
+<li>⭐ Ronaldo đưa Al Nassr vào chung kết</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<div class="title">🎵 Music</div>
+
+<iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
+<iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
+<iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
 
 </div>
 
@@ -204,86 +255,17 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 <div class="footer">
 
 <a href="https://github.com/kimkha1985">
+
 github.com/kimkha1985
+
 </a>
 
 <a href="https://x.com/ChauKimKha">
+
 x.com/ChauKimKha
+
 </a>
 
 </div>
 
 <script>
-
-// CLOCK
-function clock(){
-clock.innerHTML=new Date().toLocaleTimeString("vi-VN")
-}
-setInterval(clock,1000)
-
-// WORLD CLOCK
-function world(){
-tokyo.innerHTML=new Date().toLocaleTimeString("vi-VN",{timeZone:"Asia/Tokyo"})
-newyork.innerHTML=new Date().toLocaleTimeString("vi-VN",{timeZone:"America/New_York"})
-london.innerHTML=new Date().toLocaleTimeString("vi-VN",{timeZone:"Europe/London"})
-}
-setInterval(world,1000)
-
-// DATE
-date.innerHTML=new Date().toLocaleDateString("vi-VN")
-
-// CRYPTO
-async function crypto(){
-
-let data=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,sui&vs_currencies=usd"
-).then(r=>r.json())
-
-btc.innerHTML=data.bitcoin.usd+"$"
-eth.innerHTML=data.ethereum.usd+"$"
-bnb.innerHTML=data.binancecoin.usd+"$"
-sui.innerHTML=data.sui.usd+"$"
-
-}
-crypto()
-setInterval(crypto,30000)
-
-// WEATHER
-async function weather(){
-
-let data=await fetch(
-"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
-).then(r=>r.json())
-
-weather.innerHTML=data.current_weather.temperature+"°C"
-
-}
-weather()
-
-// FOOTBALL NEWS
-async function football(){
-
-let data=await fetch("https://www.scorebat.com/video-api/v3/").then(r=>r.json())
-
-let news=document.querySelector(".news")
-
-news.innerHTML=""
-
-for(let i=0;i<5;i++){
-
-let li=document.createElement("li")
-
-li.innerHTML="⭐ "+data.response[i].title
-
-news.appendChild(li)
-
-}
-
-}
-
-football()
-
-</script>
-
-</body>
-</html>
