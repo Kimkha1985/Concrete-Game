@@ -1,206 +1,184 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Lua Ve Nha V40 Ultra</title>
+<title>🔥 Lua Ve Nha V41 ULTRA 🔥</title>
 
 <style>
 
 body{
 margin:0;
-background:#0a2342;
-color:white;
 font-family:Arial;
+background:#0b1f33;
+color:white;
 }
 
-header{
+h2{
 text-align:center;
-font-size:32px;
-padding:15px;
-background:#04142a;
+padding:10px;
 }
 
 .container{
 display:grid;
-grid-template-columns:320px 1fr 320px;
-gap:20px;
-padding:20px;
-max-width:1600px;
-margin:auto;
+grid-template-columns:1fr 1fr 1fr;
+gap:12px;
+padding:10px;
 }
 
 .card{
-background:#0f2e55;
-padding:12px;
+background:#0e2a47;
+padding:10px;
 border-radius:12px;
-box-shadow:0 0 10px black;
-}
-
-h3{
-margin-top:0;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 iframe{
 width:100%;
-height:150px;
+height:160px;
 border:none;
-border-radius:10px;
-margin-bottom:10px;
+border-radius:8px;
+}
+
+.music-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+}
+
+.center-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 .clock{
-font-size:40px;
-text-align:center;
+font-size:32px;
 color:#00ffff;
-text-shadow:0 0 10px #00ffff;
+font-weight:bold;
+text-align:center;
+}
+
+#news a{
+color:#FFD700;
+display:block;
+margin-bottom:6px;
+font-weight:bold;
+text-decoration:none;
+}
+
+#news a:hover{
+color:white;
 }
 
 table{
 width:100%;
-border-collapse:collapse;
 }
 
-td,th{
-padding:6px;
-border-bottom:1px solid #444;
+td{
+padding:4px;
 }
 
-#earth{
+footer{
+text-align:center;
+padding:15px;
+font-size:20px;
+}
+
+footer a{
+color:#00ffff;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer a:hover{
+color:#FFD700;
+}
+
+.earth{
 width:100%;
 border-radius:50%;
 animation:spin 40s linear infinite;
 }
 
 @keyframes spin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-}
-
-footer{
-background:#04142a;
-text-align:center;
-font-size:28px;
-padding:25px;
-margin-top:30px;
-}
-
-footer a{
-color:#00ffff;
-font-weight:bold;
-margin:0 20px;
-text-decoration:none;
-}
-
-.sakura{
-position:fixed;
-top:-20px;
-font-size:18px;
-animation:fall linear infinite;
-}
-
-@keyframes fall{
-0%{transform:translateY(-10px)}
-100%{transform:translateY(110vh)}
+from{transform:rotate(0deg)}
+to{transform:rotate(360deg)}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header>🔥 Lua Ve Nha V40 ULTRA 🔥</header>
+<h2>🔥 Lua Ve Nha V41 ULTRA 🔥</h2>
 
 <div class="container">
 
-<!-- LEFT MUSIC -->
-
-<div>
-
+<!-- MUSIC LEFT -->
 <div class="card">
-
 <h3>🎵 Music</h3>
 
-<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
-<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
-<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<div class="music-grid">
+
+<iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
+<iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
+<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
+<iframe src="https://www.youtube.com/embed/IKdSeUwO5QY"></iframe>
 <iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
 <iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
 <iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
+<iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
 
 </div>
-
 </div>
 
-<!-- CENTER DASHBOARD -->
+
+<!-- CENTER -->
+<div class="card">
+
+<div class="center-grid">
 
 <div>
-
-<div class="card">
-
 <h3>⏰ Giờ Việt Nam</h3>
 <div id="clockVN" class="clock"></div>
-
 </div>
 
-<div class="card">
-
+<div>
 <h3>🌍 Giờ Quốc Tế</h3>
 <div id="clockWorld" class="clock"></div>
+</div>
 
 </div>
 
-<div class="card">
-
-<h3>🌤 Weather HCM</h3>
+<h3>🌦 Weather HCM</h3>
 <div id="weather"></div>
 
-</div>
-
-<div class="card">
-
-<h3>🪙 Crypto Market</h3>
+<h3>💰 Crypto Market</h3>
 
 <table>
-
-<tr><th>Coin</th><th>Price</th></tr>
-
 <tr><td>BTC</td><td id="btc"></td></tr>
 <tr><td>ETH</td><td id="eth"></td></tr>
 <tr><td>BNB</td><td id="bnb"></td></tr>
 <tr><td>OKB</td><td id="okb"></td></tr>
 <tr><td>SUI</td><td id="sui"></td></tr>
-
 </table>
 
-</div>
-
-<div class="card">
-
-<h3>🟡 Gold</h3>
+<h3>🥇 Gold</h3>
 <div id="gold"></div>
 
 </div>
 
-</div>
 
 <!-- RIGHT -->
-
-<div>
-
 <div class="card">
 
 <h3>🌍 Earth</h3>
 
-<img id="earth"
+<img class="earth"
 src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
-
-</div>
-
-<div class="card">
 
 <h3>⚽ Football News</h3>
 
@@ -208,72 +186,85 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 </div>
 
+</div>
+
+
+<!-- MUSIC RIGHT -->
+
+<div class="container">
+
+<div></div>
+
 <div class="card">
 
 <h3>🎵 Music</h3>
 
-<iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
+<div class="music-grid">
+
 <iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
+<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
+<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
 <iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
 <iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
+<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
+<iframe src="https://www.youtube.com/embed/IKdSeUwO5QY"></iframe>
 
 </div>
 
 </div>
 
+<div></div>
+
 </div>
+
 
 <footer>
 
-<a href="https://github.com/kimkha1985" target="_blank">
-GitHub
-</a>
-
-|
-
-<a href="https://x.com" target="_blank">
-X
-</a>
+<a href="https://github.com/">GitHub</a> |
+<a href="https://x.com/">X</a>
 
 </footer>
 
+
 <script>
 
-function clock(){
+/* CLOCK */
 
-let now=new Date()
+function updateClock(){
 
-clockVN.innerHTML=
-now.toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
+let vn=new Date().toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
+document.getElementById("clockVN").innerHTML=vn
 
-clockWorld.innerHTML=
-now.toUTCString().split(" ")[4]
+let world=new Date().toLocaleTimeString("en-US",{timeZone:"UTC"})
+document.getElementById("clockWorld").innerHTML=world
 
 }
 
-setInterval(clock,1000)
-clock()
+setInterval(updateClock,1000)
+updateClock()
+
+
+/* WEATHER */
 
 async function weather(){
 
-let r=await fetch(
-"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
-)
-
-let d=await r.json()
-
-weather.innerHTML=
-"🌡 "+d.current_weather.temperature+"°C<br>💨 "+d.current_weather.windspeed+" km/h"
+let r=await fetch("https://wttr.in/Ho+Chi+Minh?format=3")
+let d=await r.text()
+document.getElementById("weather").innerHTML=d
 
 }
 
 weather()
 setInterval(weather,600000)
 
+
+/* CRYPTO */
+
 async function crypto(){
 
 let r=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,okb,sui,pax-gold&vs_currencies=usd"
+"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,okb,sui&vs_currencies=usd"
 )
 
 let d=await r.json()
@@ -284,14 +275,33 @@ bnb.innerHTML=d.binancecoin.usd+" $"
 okb.innerHTML=d.okb.usd+" $"
 sui.innerHTML=d.sui.usd+" $"
 
-gold.innerHTML=d["pax-gold"].usd+" USD"
-
 }
 
 crypto()
 setInterval(crypto,30000)
 
-async function footballNews(){
+
+/* GOLD */
+
+async function gold(){
+
+let r=await fetch(
+"https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd"
+)
+
+let d=await r.json()
+
+gold.innerHTML=d["pax-gold"].usd+" USD"
+
+}
+
+gold()
+setInterval(gold,60000)
+
+
+/* NEWS */
+
+async function news(){
 
 let r=await fetch(
 "https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
@@ -305,7 +315,7 @@ for(let i=0;i<6;i++){
 
 let n=d.items[i]
 
-html+=`<a href="${n.link}" target="_blank">${n.title}</a><br><br>`
+html+=`<a href="${n.link}" target="_blank">${n.title}</a>`
 
 }
 
@@ -313,28 +323,8 @@ news.innerHTML=html
 
 }
 
-footballNews()
-setInterval(footballNews,300000)
-
-function sakura(){
-
-let f=document.createElement("div")
-
-f.className="sakura"
-
-f.innerHTML="🌸"
-
-f.style.left=Math.random()*100+"vw"
-
-f.style.animationDuration=(12+Math.random()*10)+"s"
-
-document.body.appendChild(f)
-
-setTimeout(()=>{f.remove()},20000)
-
-}
-
-setInterval(sakura,1200)
+news()
+setInterval(news,300000)
 
 </script>
 
