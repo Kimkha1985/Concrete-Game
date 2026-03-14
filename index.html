@@ -94,10 +94,6 @@ color:#9ddcff;
 text-decoration:none;
 }
 
-.news a:hover{
-text-decoration:underline;
-}
-
 footer{
 text-align:center;
 padding:20px;
@@ -110,18 +106,36 @@ background:#021126;
 
 <body>
 
-<header>LuaVeNha V28 ULTRA</header>
+<header>
+
+LuaVeNha V28 ULTRA
+
+<br><br>
+
+<a href="https://github.com/" target="_blank">GitHub</a>
+
+|
+
+<a href="https://x.com/" target="_blank">X</a>
+
+</header>
 
 <div class="grid">
 
 <div class="card">
+
 <h3>Clock</h3>
+
 <div id="clock"></div>
+
 </div>
 
 <div class="card">
+
 <h3>Weather</h3>
+
 <div id="weather">Loading...</div>
+
 </div>
 
 <div class="card">
@@ -175,21 +189,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <h3>Football News</h3>
 
-<div class="news" id="news">
-
-Loading...
-
-</div>
-
-<br>
-
-<a href="https://24h.com.vn/bong-da/" target="_blank">24h.com.vn</a><br>
-
-<a href="https://bongdaplus.vn/" target="_blank">Bongdaplus.vn</a><br>
-
-<a href="https://vnexpress.net/the-thao" target="_blank">VnExpress</a><br>
-
-<a href="https://www.espn.com/soccer/" target="_blank">ESPN</a>
+<div class="news" id="news">Loading...</div>
 
 </div>
 
@@ -202,27 +202,16 @@ Loading...
 <div class="music-grid">
 
 <iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
-
 <iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
-
 <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
-
 <iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
-
 <iframe src="https://www.youtube.com/embed/KbEM5vf0XGI"></iframe>
-
 <iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
-
 <iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
-
 <iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
-
 <iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
-
 <iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
-
 <iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
-
 <iframe src="https://www.youtube.com/embed/35TSAMLvzJQ"></iframe>
 
 </div>
@@ -242,7 +231,6 @@ function clock(){
 let now=new Date()
 
 document.getElementById("clock").innerHTML=
-
 now.toLocaleTimeString("vi-VN")
 
 }
@@ -254,15 +242,12 @@ clock()
 async function weather(){
 
 let r=await fetch(
-
 "https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
-
 )
 
 let d=await r.json()
 
 document.getElementById("weather").innerHTML=
-
 "🌡 "+d.current_weather.temperature+" °C<br>💨 "+d.current_weather.windspeed+" km/h"
 
 }
@@ -274,22 +259,16 @@ setInterval(weather,60000)
 async function crypto(){
 
 let r=await fetch(
-
 "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd"
-
 )
 
 let d=await r.json()
 
-document.getElementById("btc").innerHTML=d.bitcoin.usd+" $"
-
-document.getElementById("eth").innerHTML=d.ethereum.usd+" $"
-
-document.getElementById("sol").innerHTML=d.solana.usd+" $"
-
-document.getElementById("okb").innerHTML=d.okb.usd+" $"
-
-document.getElementById("sui").innerHTML=d.sui.usd+" $"
+btc.innerHTML=d.bitcoin.usd+" $"
+eth.innerHTML=d.ethereum.usd+" $"
+sol.innerHTML=d.solana.usd+" $"
+okb.innerHTML=d.okb.usd+" $"
+sui.innerHTML=d.sui.usd+" $"
 
 }
 
@@ -300,20 +279,14 @@ setInterval(crypto,30000)
 async function market(){
 
 let r=await fetch(
-
-"https://api.coingecko.com/api/v3/simple/price?ids=pax-gold,brent-crude-oil&vs_currencies=usd"
-
+"https://api.coingecko.com/api/v3/simple/price?ids=pax-gold,oil-nyse&vs_currencies=usd"
 )
 
 let d=await r.json()
 
-document.getElementById("gold").innerHTML=
+gold.innerHTML=d["pax-gold"].usd+" USD"
 
-d["pax-gold"].usd+" USD"
-
-document.getElementById("oil").innerHTML=
-
-d["brent-crude-oil"].usd+" USD"
+oil.innerHTML=d["oil-nyse"].usd+" USD"
 
 }
 
@@ -324,9 +297,7 @@ setInterval(market,60000)
 async function footballNews(){
 
 let r=await fetch(
-
 "https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
-
 )
 
 let d=await r.json()
@@ -337,13 +308,11 @@ for(let i=0;i<6;i++){
 
 let n=d.items[i]
 
-html+=
-
-`<a href="${n.link}" target="_blank">${n.title}</a><br><br>`
+html+=`<a href="${n.link}" target="_blank">${n.title}</a><br><br>`
 
 }
 
-document.getElementById("news").innerHTML=html
+news.innerHTML=html
 
 }
 
