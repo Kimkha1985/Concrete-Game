@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
 <meta charset="UTF-8">
-<title>Lua Ve Nha V40 ULTRA</title>
+
+<title>Lua Ve Nha V40 Ultra</title>
 
 <style>
 
 body{
-background:#06192f;
+margin:0;
+background:#0a2342;
 color:white;
 font-family:Arial;
-margin:0;
 }
 
 header{
 text-align:center;
 font-size:32px;
-padding:20px;
-background:#021126;
+padding:15px;
+background:#04142a;
 }
 
-.grid{
+.container{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+grid-template-columns:320px 1fr 320px;
 gap:20px;
 padding:20px;
+max-width:1600px;
+margin:auto;
 }
 
 .card{
-background:#0b2a4d;
-padding:15px;
+background:#0f2e55;
+padding:12px;
 border-radius:12px;
-box-shadow:0 0 15px #000;
+box-shadow:0 0 10px black;
+}
+
+h3{
+margin-top:0;
+}
+
+iframe{
+width:100%;
+height:150px;
+border:none;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.clock{
+font-size:40px;
+text-align:center;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff;
 }
 
 table{
@@ -43,12 +66,6 @@ border-collapse:collapse;
 td,th{
 padding:6px;
 border-bottom:1px solid #444;
-}
-
-iframe{
-width:100%;
-height:200px;
-border:none;
 }
 
 #earth{
@@ -62,19 +79,24 @@ animation:spin 40s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-.clock3d{
-font-size:48px;
+footer{
+background:#04142a;
 text-align:center;
+font-size:28px;
+padding:25px;
+margin-top:30px;
+}
+
+footer a{
 color:#00ffff;
-text-shadow:
-0 0 10px #00ffff,
-0 0 20px #00ffff,
-0 0 40px #00ffff;
+font-weight:bold;
+margin:0 20px;
+text-decoration:none;
 }
 
 .sakura{
 position:fixed;
-top:-10px;
+top:-20px;
 font-size:18px;
 animation:fall linear infinite;
 }
@@ -84,41 +106,58 @@ animation:fall linear infinite;
 100%{transform:translateY(110vh)}
 }
 
-footer{
-text-align:center;
-padding:20px;
-background:#021126;
-}
-
 </style>
 
 </head>
 
 <body>
 
-<header>Lua Ve Nha V40 ULTRA</header>
+<header>🔥 Lua Ve Nha V40 ULTRA 🔥</header>
 
-<div class="grid">
+<div class="container">
+
+<!-- LEFT MUSIC -->
+
+<div>
 
 <div class="card">
+
+<h3>🎵 Music</h3>
+
+<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
+<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
+<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
+<iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
+<iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
+<iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
+
+</div>
+
+</div>
+
+<!-- CENTER DASHBOARD -->
+
+<div>
+
+<div class="card">
+
 <h3>⏰ Giờ Việt Nam</h3>
-<div id="clockVN" class="clock3d"></div>
+<div id="clockVN" class="clock"></div>
+
 </div>
 
 <div class="card">
-<h3>🌍 World Clock</h3>
-<div id="clockWorld" class="clock3d"></div>
+
+<h3>🌍 Giờ Quốc Tế</h3>
+<div id="clockWorld" class="clock"></div>
+
 </div>
 
 <div class="card">
+
 <h3>🌤 Weather HCM</h3>
 <div id="weather"></div>
-</div>
 
-<div class="card">
-<h3>🌍 Earth</h3>
-<img id="earth"
-src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
 </div>
 
 <div class="card">
@@ -134,7 +173,6 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 <tr><td>BNB</td><td id="bnb"></td></tr>
 <tr><td>OKB</td><td id="okb"></td></tr>
 <tr><td>SUI</td><td id="sui"></td></tr>
-<tr><td>PI</td><td id="pi"></td></tr>
 
 </table>
 
@@ -142,9 +180,23 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <div class="card">
 
-<h3>🟡 Gold Price</h3>
-
+<h3>🟡 Gold</h3>
 <div id="gold"></div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div>
+
+<div class="card">
+
+<h3>🌍 Earth</h3>
+
+<img id="earth"
+src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
 
 </div>
 
@@ -160,12 +212,6 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <h3>🎵 Music</h3>
 
-<iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
-<iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
-<iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0"></iframe>
-<iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
-<iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
-<iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
 <iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
 <iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
 <iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
@@ -175,10 +221,19 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 </div>
 
+</div>
+
 <footer>
 
-<a href="https://github.com">GitHub</a> |
-<a href="https://x.com">X</a>
+<a href="https://github.com/kimkha1985" target="_blank">
+GitHub
+</a>
+
+|
+
+<a href="https://x.com" target="_blank">
+X
+</a>
 
 </footer>
 
@@ -188,10 +243,10 @@ function clock(){
 
 let now=new Date()
 
-document.getElementById("clockVN").innerHTML=
+clockVN.innerHTML=
 now.toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
 
-document.getElementById("clockWorld").innerHTML=
+clockWorld.innerHTML=
 now.toUTCString().split(" ")[4]
 
 }
@@ -207,7 +262,7 @@ let r=await fetch(
 
 let d=await r.json()
 
-document.getElementById("weather").innerHTML=
+weather.innerHTML=
 "🌡 "+d.current_weather.temperature+"°C<br>💨 "+d.current_weather.windspeed+" km/h"
 
 }
@@ -228,7 +283,6 @@ eth.innerHTML=d.ethereum.usd+" $"
 bnb.innerHTML=d.binancecoin.usd+" $"
 okb.innerHTML=d.okb.usd+" $"
 sui.innerHTML=d.sui.usd+" $"
-pi.innerHTML="N/A"
 
 gold.innerHTML=d["pax-gold"].usd+" USD"
 
@@ -239,39 +293,23 @@ setInterval(crypto,30000)
 
 async function footballNews(){
 
-let feeds=[
-
-"https://vnexpress.net/rss/the-thao.rss",
-"https://bongdaplus.vn/rss",
-"https://www.espn.com/espn/rss/soccer/news"
-
-]
-
-let html=""
-
-for(let f of feeds){
-
-try{
-
 let r=await fetch(
-"https://api.rss2json.com/v1/api.json?rss_url="+f
+"https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
 )
 
 let d=await r.json()
 
-for(let i=0;i<2;i++){
+let html=""
+
+for(let i=0;i<6;i++){
 
 let n=d.items[i]
 
-html+=`<a href="${n.link}" target="_blank">⚽ ${n.title}</a><br><br>`
+html+=`<a href="${n.link}" target="_blank">${n.title}</a><br><br>`
 
 }
 
-}catch(e){}
-
-}
-
-document.getElementById("news").innerHTML=html
+news.innerHTML=html
 
 }
 
@@ -283,10 +321,12 @@ function sakura(){
 let f=document.createElement("div")
 
 f.className="sakura"
+
 f.innerHTML="🌸"
 
 f.style.left=Math.random()*100+"vw"
-f.style.animationDuration=(10+Math.random()*10)+"s"
+
+f.style.animationDuration=(12+Math.random()*10)+"s"
 
 document.body.appendChild(f)
 
@@ -294,7 +334,7 @@ setTimeout(()=>{f.remove()},20000)
 
 }
 
-setInterval(sakura,900)
+setInterval(sakura,1200)
 
 </script>
 
