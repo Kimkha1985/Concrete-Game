@@ -1,93 +1,193 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
 
 <meta charset="UTF-8">
-<title>Lua Ve Nha V40 ULTRA</title>
+<title>Lua Ve Nha Dashboard</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
+/* ===== BACKGROUND ===== */
+
 body{
-background:#06192f;
-color:white;
-font-family:Arial;
+
 margin:0;
+font-family:Arial;
+
+background:
+url("https://i.imgur.com/Vp6L0yD.jpg");
+
+background-size:cover;
+color:white;
+
 }
 
-header{
-text-align:center;
-font-size:32px;
-padding:20px;
-background:#021126;
-}
+/* ===== GRID ===== */
 
-.grid{
+.container{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:20px;
+
+grid-template-columns:
+330px 1fr 330px;
+
+gap:18px;
+
 padding:20px;
+
 }
+
+/* ===== CARD ===== */
 
 .card{
-background:#0b2a4d;
-padding:15px;
-border-radius:12px;
-box-shadow:0 0 15px #000;
+
+background:rgba(0,0,0,0.55);
+
+backdrop-filter:blur(12px);
+
+border-radius:18px;
+
+padding:16px;
+
+box-shadow:0 0 20px #00eaff;
+
 }
 
-table{
-width:100%;
-border-collapse:collapse;
+/* ===== TITLES ===== */
+
+.title{
+
+font-size:20px;
+
+color:#00eaff;
+
+margin-bottom:10px;
+
 }
 
-td,th{
-padding:6px;
-border-bottom:1px solid #444;
-}
+/* ===== MUSIC ===== */
 
 iframe{
+
 width:100%;
-height:200px;
+
+height:170px;
+
 border:none;
+
+border-radius:10px;
+
+margin-bottom:10px;
+
 }
 
-#earth{
+/* ===== CLOCK ===== */
+
+.clock{
+
+font-size:48px;
+
+text-align:center;
+
+color:#00ffff;
+
+}
+
+/* ===== WEATHER ===== */
+
+.weather{
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:14px;
+
+margin-top:10px;
+
+}
+
+/* ===== CRYPTO ===== */
+
+.crypto div{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:6px;
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+/* ===== NEWS ===== */
+
+.news li{
+
+margin-bottom:10px;
+
+}
+
+/* ===== EARTH ===== */
+
+.earth{
+
 width:100%;
+
 border-radius:50%;
+
 animation:spin 40s linear infinite;
+
 }
 
 @keyframes spin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
+
+from{transform:rotate(0)}
+
+to{transform:rotate(360deg)}
+
 }
 
-.clock3d{
-font-size:48px;
+/* ===== FOOTER ===== */
+
+.footer{
+
 text-align:center;
+
+margin-top:30px;
+
+padding:30px;
+
+}
+
+.footer a{
+
+font-size:20px;
+
+margin:10px;
+
+padding:12px 20px;
+
+background:rgba(0,0,0,0.5);
+
+border-radius:12px;
+
+text-decoration:none;
+
 color:#00ffff;
-text-shadow:
-0 0 10px #00ffff,
-0 0 20px #00ffff,
-0 0 40px #00ffff;
+
+box-shadow:0 0 20px #00ffff;
+
 }
 
-.sakura{
-position:fixed;
-top:-10px;
-font-size:18px;
-animation:fall linear infinite;
-}
+.footer a:hover{
 
-@keyframes fall{
-0%{transform:translateY(-10px)}
-100%{transform:translateY(110vh)}
-}
+transform:scale(1.1);
 
-footer{
-text-align:center;
-padding:20px;
-background:#021126;
 }
 
 </style>
@@ -96,69 +196,13 @@ background:#021126;
 
 <body>
 
-<header>Lua Ve Nha V40 ULTRA</header>
+<div class="container">
 
-<div class="grid">
-
-<div class="card">
-<h3>⏰ Giờ Việt Nam</h3>
-<div id="clockVN" class="clock3d"></div>
-</div>
-
-<div class="card">
-<h3>🌍 World Clock</h3>
-<div id="clockWorld" class="clock3d"></div>
-</div>
-
-<div class="card">
-<h3>🌤 Weather HCM</h3>
-<div id="weather"></div>
-</div>
-
-<div class="card">
-<h3>🌍 Earth</h3>
-<img id="earth"
-src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
-</div>
+<!-- LEFT MUSIC -->
 
 <div class="card">
 
-<h3>🪙 Crypto Market</h3>
-
-<table>
-
-<tr><th>Coin</th><th>Price</th></tr>
-
-<tr><td>BTC</td><td id="btc"></td></tr>
-<tr><td>ETH</td><td id="eth"></td></tr>
-<tr><td>BNB</td><td id="bnb"></td></tr>
-<tr><td>OKB</td><td id="okb"></td></tr>
-<tr><td>SUI</td><td id="sui"></td></tr>
-<tr><td>PI</td><td id="pi"></td></tr>
-
-</table>
-
-</div>
-
-<div class="card">
-
-<h3>🟡 Gold Price</h3>
-
-<div id="gold"></div>
-
-</div>
-
-<div class="card">
-
-<h3>⚽ Football News</h3>
-
-<div id="news"></div>
-
-</div>
-
-<div class="card">
-
-<h3>🎵 Music</h3>
+<div class="title">🎵 Music</div>
 
 <iframe src="https://www.youtube.com/embed/qDQi31U9qrE"></iframe>
 <iframe src="https://www.youtube.com/embed/EMb_IyLEQtw"></iframe>
@@ -166,6 +210,96 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 <iframe src="https://www.youtube.com/embed/dsaXgVd5cps"></iframe>
 <iframe src="https://www.youtube.com/embed/w_kgRzsEXeM"></iframe>
 <iframe src="https://www.youtube.com/embed/l3gNl5Pz1Z8"></iframe>
+
+</div>
+
+<!-- CENTER -->
+
+<div>
+
+<div class="card">
+
+<div class="title">🕒 Giờ Việt Nam</div>
+
+<div id="clock" class="clock"></div>
+
+</div>
+
+<div class="card">
+
+<div class="title">🌤 Weather HCM</div>
+
+<div id="weather"></div>
+
+</div>
+
+<div class="card crypto">
+
+<div class="title">₿ Crypto Market</div>
+
+<div>BTC <span id="btc"></span></div>
+<div>ETH <span id="eth"></span></div>
+<div>BNB <span id="bnb"></span></div>
+<div>OKB <span id="okb"></span></div>
+<div>SUI <span id="sui"></span></div>
+
+</div>
+
+<div class="card">
+
+<div class="title">🪙 Gold</div>
+
+<div id="gold"></div>
+
+</div>
+
+<div class="card">
+
+<div class="title">🙏 Nhạc Phật</div>
+
+<iframe src="https://www.youtube.com/embed/q--M-6STHlI"></iframe>
+<iframe src="https://www.youtube.com/embed/Sk0Re5Wa-QI"></iframe>
+<iframe src="https://www.youtube.com/embed/07QO_01Xl5s"></iframe>
+<iframe src="https://www.youtube.com/embed/pw1MZFrJCMw"></iframe>
+<iframe src="https://www.youtube.com/embed/x1ss2eVlDgs"></iframe>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div>
+
+<div class="card">
+
+<div class="title">🌍 Earth</div>
+
+<img class="earth"
+src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg">
+
+</div>
+
+<div class="card">
+
+<div class="title">⚽ Football News</div>
+
+<ul class="news">
+
+<li>Real Madrid thắng Barcelona 3-2</li>
+<li>Mbappe lập hattrick</li>
+<li>Messi ghi bàn phút 90</li>
+<li>Ronaldo đưa Al Nassr vào chung kết</li>
+<li>Inter dẫn đầu Serie A</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<div class="title">🎵 Music</div>
+
 <iframe src="https://www.youtube.com/embed/3OeEinNn--E"></iframe>
 <iframe src="https://www.youtube.com/embed/8Vqlecx98U4"></iframe>
 <iframe src="https://www.youtube.com/embed/LmGERikvn6w"></iframe>
@@ -175,68 +309,98 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 </div>
 
-<footer>
+</div>
 
-<a href="https://github.com">GitHub</a> |
-<a href="https://x.com">X</a>
+<div class="footer">
 
-</footer>
+<a href="https://github.com/kimkha1985">
+
+github.com/kimkha1985
+
+</a>
+
+<a href="https://x.com/ChauKimKha">
+
+x.com/ChauKimKha
+
+</a>
+
+</div>
 
 <script>
+
+/* CLOCK */
 
 function clock(){
 
 let now=new Date()
 
-document.getElementById("clockVN").innerHTML=
-now.toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
-
-document.getElementById("clockWorld").innerHTML=
-now.toUTCString().split(" ")[4]
+document.getElementById("clock").innerHTML=
+now.toLocaleTimeString("vi-VN")
 
 }
 
 setInterval(clock,1000)
+
 clock()
 
-async function weather(){
-
-let r=await fetch(
-"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
-)
-
-let d=await r.json()
-
-document.getElementById("weather").innerHTML=
-"🌡 "+d.current_weather.temperature+"°C<br>💨 "+d.current_weather.windspeed+" km/h"
-
-}
-
-weather()
-setInterval(weather,600000)
+/* CRYPTO */
 
 async function crypto(){
 
-let r=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,okb,sui,pax-gold&vs_currencies=usd"
-)
+let data=await fetch(
 
-let d=await r.json()
+"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,okb,sui&vs_currencies=usd"
 
-btc.innerHTML=d.bitcoin.usd+" $"
-eth.innerHTML=d.ethereum.usd+" $"
-bnb.innerHTML=d.binancecoin.usd+" $"
-okb.innerHTML=d.okb.usd+" $"
-sui.innerHTML=d.sui.usd+" $"
-pi.innerHTML="N/A"
+).then(r=>r.json())
 
-gold.innerHTML=d["pax-gold"].usd+" USD"
+btc.innerHTML=data.bitcoin.usd+" $"
+eth.innerHTML=data.ethereum.usd+" $"
+bnb.innerHTML=data.binancecoin.usd+" $"
+okb.innerHTML=data.okb.usd+" $"
+sui.innerHTML=data.sui.usd+" $"
 
 }
 
-crypto()
 setInterval(crypto,30000)
 
-async function footballNews(){
+crypto()
 
-let feeds=[
+/* GOLD */
+
+async function gold(){
+
+let data=await fetch(
+"https://api.metals.live/v1/spot/gold"
+).then(r=>r.json())
+
+document.getElementById("gold").innerHTML=
+data[0].price+" USD"
+
+}
+
+setInterval(gold,60000)
+
+gold()
+
+/* WEATHER */
+
+async function weather(){
+
+let data=await fetch(
+"https://api.open-meteo.com/v1/forecast?latitude=10.82&longitude=106.63&current_weather=true"
+).then(r=>r.json())
+
+document.getElementById("weather").innerHTML=
+data.current_weather.temperature+"°C"
+
+}
+
+setInterval(weather,600000)
+
+weather()
+
+</script>
+
+</body>
+</html>
