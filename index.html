@@ -5,21 +5,21 @@
 
 <meta charset="UTF-8">
 
-<title>LuaVeNha V28 ULTRA</title>
+<title>LuaVeNha V38 ULTRA GOD</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#061a33;
+background:linear-gradient(135deg,#061a33,#020a18);
 color:white;
 }
 
 header{
 text-align:center;
 font-size:34px;
-padding:20px;
+padding:25px;
 background:#021126;
 }
 
@@ -34,7 +34,7 @@ padding:20px;
 background:#0b2a4d;
 padding:15px;
 border-radius:12px;
-box-shadow:0 0 10px #000;
+box-shadow:0 0 15px #000;
 }
 
 table{
@@ -49,14 +49,14 @@ border-bottom:1px solid #444;
 
 iframe{
 width:100%;
-height:200px;
+height:230px;
 border:none;
 border-radius:10px;
 }
 
 .music-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:12px;
 }
 
@@ -71,10 +71,9 @@ animation:spin 40s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-#clock{
-font-size:60px;
-text-align:center;
-color:#00ffff;
+.clock{
+font-size:28px;
+margin:4px;
 }
 
 .sakura{
@@ -87,11 +86,6 @@ animation:fall linear infinite;
 @keyframes fall{
 0%{transform:translateY(-10px)}
 100%{transform:translateY(110vh)}
-}
-
-.news a{
-color:#9ddcff;
-text-decoration:none;
 }
 
 footer{
@@ -108,15 +102,12 @@ background:#021126;
 
 <header>
 
-LuaVeNha V28 ULTRA
+LuaVeNha V38 ULTRA GOD
 
 <br><br>
 
-<a href="https://github.com/" target="_blank">GitHub</a>
-
-|
-
-<a href="https://x.com/" target="_blank">X</a>
+<a href="https://github.com">GitHub</a> |
+<a href="https://x.com">X</a>
 
 </header>
 
@@ -124,9 +115,14 @@ LuaVeNha V28 ULTRA
 
 <div class="card">
 
-<h3>Clock</h3>
+<h3>World Clock</h3>
 
-<div id="clock"></div>
+<div class="clock" id="vn"></div>
+<div class="clock" id="utc"></div>
+<div class="clock" id="ny"></div>
+<div class="clock" id="london"></div>
+<div class="clock" id="tokyo"></div>
+<div class="clock" id="singapore"></div>
 
 </div>
 
@@ -134,7 +130,7 @@ LuaVeNha V28 ULTRA
 
 <h3>Weather</h3>
 
-<div id="weather">Loading...</div>
+<div id="weather"></div>
 
 </div>
 
@@ -149,39 +145,30 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <div class="card">
 
-<h3>Crypto</h3>
+<h3>Crypto Market</h3>
 
-<table>
-
-<tr><th>Coin</th><th>Price</th></tr>
-
-<tr><td>BTC</td><td id="btc"></td></tr>
-
-<tr><td>ETH</td><td id="eth"></td></tr>
-
-<tr><td>SOL</td><td id="sol"></td></tr>
-
-<tr><td>OKB</td><td id="okb"></td></tr>
-
-<tr><td>SUI</td><td id="sui"></td></tr>
-
-</table>
+<table id="cryptoTable"></table>
 
 </div>
 
 <div class="card">
 
-<h3>Gold</h3>
+<h3>Markets</h3>
 
-<div id="gold">Loading...</div>
+Gold: 2180 USD<br>
+Oil: 75 USD<br>
+Silver: 24 USD<br>
+DXY: 103
 
 </div>
 
 <div class="card">
 
-<h3>Oil</h3>
+<h3>US Stocks</h3>
 
-<div id="oil">Loading...</div>
+NASDAQ ~16000<br>
+S&P500 ~5100<br>
+Dow ~38000
 
 </div>
 
@@ -189,7 +176,23 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <h3>Football News</h3>
 
-<div class="news" id="news">Loading...</div>
+<div id="news"></div>
+
+</div>
+
+<div class="card">
+
+<h3>Premier League</h3>
+
+<iframe src="https://www.scorebat.com/embed/league/england-premier-league/standings/"></iframe>
+
+</div>
+
+<div class="card">
+
+<h3>Live Score</h3>
+
+<iframe src="https://www.scorebat.com/embed/livescore/"></iframe>
 
 </div>
 
@@ -220,24 +223,26 @@ src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apo
 
 <footer>
 
-LuaVeNha Dashboard
+LuaVeNha Dashboard V38
 
 </footer>
 
 <script>
 
-function clock(){
+function clocks(){
 
 let now=new Date()
 
-document.getElementById("clock").innerHTML=
-now.toLocaleTimeString("vi-VN")
+vn.innerHTML="🇻🇳 "+now.toLocaleTimeString("vi-VN",{timeZone:"Asia/Ho_Chi_Minh"})
+utc.innerHTML="🌍 UTC "+now.toUTCString().split(" ")[4]
+ny.innerHTML="🇺🇸 "+now.toLocaleTimeString("en-US",{timeZone:"America/New_York"})
+london.innerHTML="🇬🇧 "+now.toLocaleTimeString("en-GB",{timeZone:"Europe/London"})
+tokyo.innerHTML="🇯🇵 "+now.toLocaleTimeString("ja-JP",{timeZone:"Asia/Tokyo"})
+singapore.innerHTML="🇸🇬 "+now.toLocaleTimeString("en-SG",{timeZone:"Asia/Singapore"})
 
 }
 
-setInterval(clock,1000)
-
-clock()
+setInterval(clocks,1000)
 
 async function weather(){
 
@@ -247,54 +252,40 @@ let r=await fetch(
 
 let d=await r.json()
 
-document.getElementById("weather").innerHTML=
+weather.innerHTML=
 "🌡 "+d.current_weather.temperature+" °C<br>💨 "+d.current_weather.windspeed+" km/h"
 
 }
 
 weather()
 
-setInterval(weather,60000)
-
 async function crypto(){
 
+let coins="bitcoin,ethereum,binancecoin,solana,ripple,cardano,dogecoin,avalanche-2,polkadot,chainlink,matic-network,litecoin,bitcoin-cash,uniswap,ethereum-classic,okb,sui,filecoin,aptos,cosmos"
+
 let r=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,okb,sui&vs_currencies=usd"
+"https://api.coingecko.com/api/v3/simple/price?ids="+coins+"&vs_currencies=usd"
 )
 
 let d=await r.json()
 
-btc.innerHTML=d.bitcoin.usd+" $"
-eth.innerHTML=d.ethereum.usd+" $"
-sol.innerHTML=d.solana.usd+" $"
-okb.innerHTML=d.okb.usd+" $"
-sui.innerHTML=d.sui.usd+" $"
+let html="<tr><th>Coin</th><th>Price</th></tr>"
+
+for(let c in d){
+
+html+="<tr><td>"+c+"</td><td>"+d[c].usd+" $</td></tr>"
+
+}
+
+cryptoTable.innerHTML=html
 
 }
 
 crypto()
 
-setInterval(crypto,30000)
+setInterval(crypto,20000)
 
-async function market(){
-
-let r=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids=pax-gold,oil-nyse&vs_currencies=usd"
-)
-
-let d=await r.json()
-
-gold.innerHTML=d["pax-gold"].usd+" USD"
-
-oil.innerHTML=d["oil-nyse"].usd+" USD"
-
-}
-
-market()
-
-setInterval(market,60000)
-
-async function footballNews(){
+async function news(){
 
 let r=await fetch(
 "https://api.rss2json.com/v1/api.json?rss_url=https://vnexpress.net/rss/the-thao.rss"
@@ -308,7 +299,7 @@ for(let i=0;i<6;i++){
 
 let n=d.items[i]
 
-html+=`<a href="${n.link}" target="_blank">${n.title}</a><br><br>`
+html+=`<a href="${n.link}" target="_blank">${n.title}</a><br>`
 
 }
 
@@ -316,9 +307,7 @@ news.innerHTML=html
 
 }
 
-footballNews()
-
-setInterval(footballNews,300000)
+news()
 
 function sakura(){
 
@@ -343,5 +332,4 @@ setInterval(sakura,900)
 </script>
 
 </body>
-
 </html>
